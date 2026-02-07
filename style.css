@@ -5,6 +5,7 @@ body {
 
 .wrapper {
   display: flex;
+  align-items: center;
   width: 90vw;
   height: 90vh;
   margin: auto;
@@ -13,17 +14,37 @@ body {
   background: #f6f6f6;
 }
 .left-panel {
-  display: flex;
-  flex-direction: column;
+  /* display: flex; */
+  /* flex-direction: column; */
+
   width: 25%;
   background: #ffffff;
   height: 100%;
   border-top-left-radius: 50px;
   border-bottom-left-radius: 50px;
-  padding: 40px;
-  gap: 20px;
+
+  /* gap: 100px; */
+  /* justify-content: space-evenly; */
+  /* align-items: center; */
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  height: 90%;
+  margin-inline: auto;
   align-items: center;
-  gap: 100px;
+  /* background-color: lightblue; */
+  justify-content: space-evenly;
+  gap: 40px;
+  margin-top: 20px;
+}
+.left-second-item {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  /* background-color: lightblue; */
+  /* width: 80%; */
 }
 
 .icon {
@@ -33,6 +54,7 @@ body {
   background: linear-gradient(135deg, #ffd76a, #ffb347);
 }
 .Search-bar {
+  padding: 20px;
   width: 80%;
   height: 40px;
   background-color: #f2f2f2;
@@ -42,28 +64,79 @@ body {
 }
 .lef-panel-middle {
   display: flex;
-  gap: 5px;
-  margin-top: 200px;
+  gap: 10px;
+  /* background-color: lightcoral; */
+  /* margin-top: 200px; */
   /* background-color: lightblue; */
   /* height: 40%; */
   align-items: center;
   flex-direction: column;
 }
 h1,
-h4 {
+h4,
+h2 {
   font-family: sans-serif;
 }
 
 .photo {
   border-radius: 15px;
-  height: 20%;
-  width: 80%;
+  height: 40%;
+  width: 100%;
 }
 
 .right-panel {
-  /* background-color: aqua; */
   height: 100%;
-  width: 75%;
+
+  /* width: 75%; */
+  background-color: aqua;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* justify-content: space-around; */
+
   border-top-right-radius: 50px;
   border-bottom-right-radius: 50px;
+}
+.right-panel-header {
+  display: flex;
+  gap: 10px;
+  /* padding: 20px; */
+  /* margin-top: 20px; */
+  /* margin-left: 50px; */
+}
+.right-card {
+  display: flex;
+  flex-direction: column;
+}
+.week {
+  display: flex;
+  /* padding: 40px; */
+  /* padding-inline: 0px; */
+  /* background-color: lightblue; */
+  /* width: 90%; */
+  align-items: center;
+  gap: 30px;
+  /* margin-left: 70px; */
+}
+.week-days {
+  padding-block: 15px;
+  display: flex;
+  width: 120px;
+
+  border-radius: 30px;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  gap: 5px;
+  background: #ffffff;
+}
+
+.little-Icon {
+  width: 34px;
+  height: 34px;
+  background: linear-gradient(135deg, #ffd76a, #ffb347);
+  border-radius: 50%;
+}
+.week-days h1,
+h2 {
+  font-weight: 150;
 }
