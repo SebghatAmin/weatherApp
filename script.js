@@ -1,28 +1,43 @@
 const apiKey = "0cbca3c4e94745a7a22145413261602";
 const city = "herat";
-
+const weeklyForcast = document.querySelector(".week");
+const dailyForecast = document.querySelector(".lef-panel-middle");
 fetch(
   `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=7`,
 )
   .then((response) => response.json())
   .then((data) => {
     console.log(data);
+    const todaydate = new Date(data.current.last_updated);
+    const todayName = todaydate.toLocaleDateString("en-US", {
+      weekday: "long",
+    });
+    dailyForecast.innerHTML = `<div class="icon"></div>
 
+              <h1 class="degree">${data.current.temp_c}°C</h1>
+
+              <div class="current-status">
+                <h4 class="slim-text">${todayName}</h4>
+                <h4 class="slim-text">${data.current.condition.text}</h4>
+              </div>`;
     const forecast = data.forecast.forecastday;
-    // console.log("today tempreture is:" + " " + forecast);
-
     forecast.forEach((day) => {
-      console.log(
-        "Max temperature forcast is " +
-          " " +
-          day.day.maxtemp_c +
-          "  " +
-          "Minimum temperature forcast is " +
-          " " +
-          day.day.mintemp_c,
-      );
-      //   console.log(day.day_fields.maxtemp_c);
-      //   console.log(day.day_fields.condition.text);
+      const date = new Date(day.date);
+      const dayName = date.toLocaleDateString("en-US", {
+        weekday: "short",
+      });
+
+      console.log(dayName + " " + day.day.maxtemp_c);
+      weeklyForcast.innerHTML += `
+      
+            <div class="week-days">
+              <h1>${dayName}</h1>
+              <div class="little-Icon"></div>
+              <h2>Max:${day.day.maxtemp_c}&deg;C</h2>
+                            <h2>Min:${day.day.mintemp_c}&deg;C</h2>
+
+            </div>
+     `;
     });
   })
   .catch((error) => {
