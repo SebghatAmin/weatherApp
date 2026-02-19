@@ -2,16 +2,30 @@ const apiKey = "0cbca3c4e94745a7a22145413261602";
 const city = "herat";
 const weeklyForcast = document.querySelector(".week");
 const dailyForecast = document.querySelector(".lef-panel-middle");
+const uvIndex = document.querySelector("#uvIndex");
 fetch(
-  `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=7`,
+  `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=7&aqi=yes`,
 )
   .then((response) => response.json())
   .then((data) => {
     console.log(data);
+    uvIndex.innerHTML = data.current.uv;
+    document.getElementById("wind-status").innerHTML =
+      `${data.current.wind_kph}<span> KM/h</span>`;
+    document.getElementById("sunrise").innerHTML =
+      data.forecast.forecastday[0].astro.sunrise;
+    document.getElementById("sunset").innerHTML =
+      data.forecast.forecastday[0].astro.sunset;
+    document.getElementById("humidity").innerHTML = data.current.humidity;
+    document.getElementById("airquality").innerHTML =
+      data.current.air_quality.pm2_5;
+    document.getElementById("visibility").innerHTML = data.current.vis_km;
+
     const todaydate = new Date(data.current.last_updated);
     const todayName = todaydate.toLocaleDateString("en-US", {
       weekday: "long",
     });
+
     dailyForecast.innerHTML = `<div class="icon"></div>
 
               <h1 class="degree">${data.current.temp_c}°C</h1>
