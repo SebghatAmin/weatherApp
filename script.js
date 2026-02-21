@@ -39,6 +39,8 @@ input.addEventListener("keydown", (e) => {
                 <h4 class="slim-text">${data.current.condition.text}</h4>
               </div>`;
         const forecast = data.forecast.forecastday;
+        weeklyForcast.innerHTML = "";
+
         forecast.forEach((day) => {
           const date = new Date(day.date);
           const dayName = date.toLocaleDateString("en-US", {
@@ -46,7 +48,6 @@ input.addEventListener("keydown", (e) => {
           });
 
           console.log(dayName + " " + day.day.maxtemp_c);
-          weeklyForcast.innerHTML += "";
           weeklyForcast.innerHTML += `
             <div class="week-days">
               <h1>${dayName}</h1>
